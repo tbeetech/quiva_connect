@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation</title>
+</head>
+<body>
+    <form action="/translate" method="POST">
+        <div>
+            <label for="user1Message">User 1 Message:</label>
+            <input type="text" id="user1Message" name="user1Message" required>
+        </div>
+        <div>
+            <label for="user1Lang">User 1 Language:</label>
+            <input type="text" id="user1Lang" name="user1Lang" required>
+        </div>
+        <div>
+            <label for="user2Message">User 2 Message:</label>
+            <input type="text" id="user2Message" name="user2Message" required>
+        </div>
+        <div>
+            <label for="user2Lang">User 2 Language:</label>
+            <input type="text" id="user2Lang" name="user2Lang" required>
+        </div>
+        <button type="submit">Translate</button>
+    </form>
+</body>
+</html>

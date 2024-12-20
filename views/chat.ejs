@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <form id="message-form">
+            <input type="text" id="message-input" placeholder="Type a message..." required>
+            <input type="text" id="from-language" placeholder="From language..." required>
+            <input type="text" id="to-language" placeholder="To language..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        document.getElementById('message-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = document.getElementById('message-input').value;
+            const fromLanguage = document.getElementById('from-language').value;
+            const toLanguage = document.getElementById('to-language').value;
+
+            socket.emit('sendMessage', { message, fromLanguage, toLanguage });
+
+            document.getElementById('message-input').value = '';
+        });
+
+        socket.on('receiveMessage', function(data) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = `Original: ${data.originalMessage} | Translated: ${data.translatedMessage} (${data.fromLanguage} to ${data.toLanguage})`;
+            document.getElementById('messages').appendChild(messageElement);
+        });
+    </script>
+</body>
+</html>

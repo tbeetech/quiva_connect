@@ -1,0 +1,22 @@
+{
+  "name": "quiva_api",
+  "version": "1.0.0",
+  "description": "quiva_ai",
+  "main": "q.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tbeetech",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.9",
+    "socket.io": "^4.8.1"
+  }
+}
