@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Translation</title>
+    <title>Input Image URL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,14 +18,18 @@
         }
         .container {
             background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             animation: fadeIn 1s;
+            max-width: 400px;
+            width: 100%;
         }
         h1 {
             text-align: center;
             color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
         form {
             display: flex;
@@ -34,46 +38,37 @@
         label {
             margin-top: 10px;
             color: #555;
+            font-size: 16px;
         }
-        input[type="text"], button {
-            padding: 10px;
+        input[type="url"], button {
+            padding: 15px;
             margin-top: 5px;
-            border-radius: 5px;
+            border-radius: 10px;
             border: 1px solid #ccc;
+            font-size: 16px;
         }
         button {
             background-color: #007bff;
             color: #fff;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
         button:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
     <div class="container animate__animated animate__fadeIn">
-        <h1>Translation</h1>
-        <form action="/translate" method="POST">
+        <h1>Input Image URL</h1>
+        <form action="/vision-upload" method="POST">
             <div>
-                <label for="user1Message">User 1 Message:</label>
-                <input type="text" id="user1Message" name="user1Message" required>
+                <label for="imageUrl">Image URL:</label>
+                <input type="url" id="imageUrl" name="imageUrl" placeholder="https://example.com/image.jpg" required>
             </div>
-            <div>
-                <label for="user1Lang">User 1 Language:</label>
-                <input type="text" id="user1Lang" name="user1Lang" required>
-            </div>
-            <div>
-                <label for="user2Message">User 2 Message:</label>
-                <input type="text" id="user2Message" name="user2Message" required>
-            </div>
-            <div>
-                <label for="user2Lang">User 2 Language:</label>
-                <input type="text" id="user2Lang" name="user2Lang" required>
-            </div>
-            <button type="submit">Translate</button>
+            <button type="submit">Next</button>
         </form>
     </div>
 </body>

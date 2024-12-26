@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1f4037, #99f2c8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            color: #fff;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        p {
+            color: #fff;
+            font-size: 16px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-top: 10px;
+            color: #fff;
+            font-size: 16px;
+        }
+        input[type="text"], button {
+            padding: 15px;
+            margin-top: 5px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+            width: 90%;
+            transition: background 0.3s, transform 0.3s;
+        }
+        button {
+            cursor: pointer;
+        }
+        button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1>Conversation</h1>
+        <p>Active User: <%= activeUser %></p>
+        <% if (translatedMessage && translatedMessage.trim()) { %>
+            <p>Translated Message: <%= translatedMessage %></p>
+        <% } %>
+        <form action="/translate-message" method="POST">
+            <input type="hidden" name="user1Lang" value="<%= user1Lang %>">
+            <input type="hidden" name="user2Lang" value="<%= user2Lang %>">
+            <input type="hidden" name="activeUser" value="<%= activeUser %>">
+            <div>
+                <label for="message">Message:</label>
+                <input type="text" id="message" name="message" required>
+            </div>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
